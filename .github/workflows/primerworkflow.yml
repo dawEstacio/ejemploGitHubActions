@@ -1,8 +1,16 @@
-name: Primer workflow
+name: Linter workflow
 on: [push]
 jobs:
-  imprimir_hello_world:
+  ejecutar_linter:
    runs-on: ubuntu-latest
    steps:
-    - name: Echo
-      run: echo hola mundo
+    - name: Obtencion del codigo
+      uses: actions/checkout@v2
+    - name: Ejecutar linter
+      uses: github/super-linter@v4
+      env:
+        DEFAULT_BRANCH: main
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        LINTER_RULES_PATH: /
+        JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
+        VALIDATE_JAVASCRIPT_ES: true

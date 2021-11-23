@@ -14,3 +14,8 @@ jobs:
         LINTER_RULES_PATH: /
         JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
         VALIDATE_JAVASCRIPT_ES: true
+  ejecutar_test:
+    - name: Obtencion del codigo
+      uses: actions/checkout@v2
+    - name: Obtencion del codigo
+      run: npm install jest && npm test
